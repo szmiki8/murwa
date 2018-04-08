@@ -6,6 +6,7 @@ A project for demonstration.
 
 [Purpose](#purpose)  
 [Requirements](#requirements)
+[Specification](#specification)
 
 <a name="purpose"></a>
 ## Purpose
@@ -27,3 +28,14 @@ application which makes its users able to shorten any URLs.
 * The system does not handle users
 * The system persist the long and short URLs
 * The system provides a list of all the URLs handled
+
+<a name="specification"></a>
+## Specification
+
+The user is able to create a shortened URL using a form and
+able to view the shortened URLs in a list using a web browser.
+Picking one shortened URL from the list the user can watch
+a preview and navigate to the URL. The system automatically
+generates a short URL (containing a unique token). The user
+is able to provide this unique token.  
+
