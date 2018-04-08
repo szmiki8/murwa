@@ -5,7 +5,7 @@ A project for demonstration.
 **Table of Contents**
 
 [Purpose](#purpose)  
-[Requirements](#requirements)
+[Requirements](#requirements)  
 [Specification](#specification)
 
 <a name="purpose"></a>
@@ -38,4 +38,13 @@ Picking one shortened URL from the list the user can watch
 a preview and navigate to the URL. The system automatically
 generates a short URL (containing a unique token). The user
 is able to provide this unique token.  
+
+The system stores all shortened URL in relational database.
+Every URL gets an incrementing decimal ID. This ID is converted
+to base 62 using the following characters:
+- 0..9 -> 0..9
+- 10..35 -> a..z
+- 36..61 -> A..Z
+
+E.g. "AgL" string represents 139423.
 
