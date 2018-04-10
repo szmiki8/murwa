@@ -6,7 +6,7 @@ A project for demonstration.
 
 [Purpose](#purpose)  
 [Requirements](#requirements)  
-[Specification](#specification)
+[Specification](#specification)  
 [Testing](#testing_running)
 
 <a name="purpose"></a>
@@ -68,4 +68,8 @@ code you may execute one of the following commands:
 
 #### Running
 
-TBD
+To run the application you should execute one of the following
+commands in the root of the source directory.
+
+- ./mvnw spring-boot:run (On Linux/Unix systems)
+- mvnw.cmd spring-boot:run (On Windows systems)
