@@ -18,7 +18,7 @@ public class UrlReduction {
     @Column(nullable = false)
     private String url;
 
-    private UrlReduction() { }
+    UrlReduction() { }
 
     public UrlReduction(String url) {
         this.url = url;
@@ -40,4 +40,9 @@ public class UrlReduction {
     public String getToken() {
         return token;
     }
+
+    public String getUrl() {
+        return url;
+    }
+
 }

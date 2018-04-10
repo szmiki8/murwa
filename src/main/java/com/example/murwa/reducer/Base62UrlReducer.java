@@ -1,10 +1,13 @@
 package com.example.murwa.reducer;
 
+import org.springframework.stereotype.Component;
+
 import java.util.ArrayDeque;
 import java.util.ArrayList;
 import java.util.Deque;
 import java.util.List;
 
+@Component
 public class Base62UrlReducer implements UrlReducer {
 
     private static final List<Character> CHARACTERS = new ArrayList<>();

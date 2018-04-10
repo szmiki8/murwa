@@ -7,6 +7,7 @@ A project for demonstration.
 [Purpose](#purpose)  
 [Requirements](#requirements)  
 [Specification](#specification)
+[Testing](#testing_running)
 
 <a name="purpose"></a>
 ## Purpose
@@ -48,3 +49,23 @@ to base 62 using the following characters:
 
 E.g. "AgL" string represents 139423.
 
+<a name="testing_running"></a>
+## Testing and Running
+
+#### Requirements
+
+Java Runtime Environment 1.8 or later is required to test
+and run the application. 
+
+#### Testing
+
+To run the unit and integration tests please clone the repository
+or download the source code directly. In the root of the source
+code you may execute one of the following commands:
+
+- ./mvnw test (On Linux/Unix systems)
+- mvnw.cmd test (On Windows systems)
+
+#### Running
+
+TBD
