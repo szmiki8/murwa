@@ -1,1 +1,15 @@
-<p>Hello, there!</p>
+<mat-sidenav-container class="app-container">
+  <mat-sidenav mode="side" closed></mat-sidenav>
+
+  <mat-sidenav-content>
+    <mat-toolbar color="primary">
+      <span class="app-icon"><mat-icon>web</mat-icon></span>
+      <span>Mini URL Web Application</span>
+    </mat-toolbar>
+
+    <edit-url-reduction></edit-url-reduction>
+
+    <url-reduction-list (urlReductionCreated)="loadData()"></url-reduction-list>
+
+  </mat-sidenav-content>
+</mat-sidenav-container>
