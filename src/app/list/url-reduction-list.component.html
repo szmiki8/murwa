@@ -2,10 +2,18 @@
   <span>URLs</span>
 </mat-toolbar>
 
-<mat-table #table [dataSource]="urlReductions">
+<mat-card *ngIf="!(urlReductions.length > 0)" class="warning">
+  <mat-card-subtitle>No URLs at the moment!</mat-card-subtitle>
+</mat-card>
+
+<mat-table #table [dataSource]="urlReductions" *ngIf="urlReductions.length > 0">
   <ng-container matColumnDef="shortUrl">
     <mat-header-cell *matHeaderCellDef> Short URL </mat-header-cell>
-    <mat-cell *matCellDef="let urlReduction"> {{ appUrl }}{{ urlReduction.token }} </mat-cell>
+    <mat-cell *matCellDef="let urlReduction">
+      <a href="#">
+        {{ appUrl }}{{ urlReduction.token }}
+      </a>
+    </mat-cell>
   </ng-container>
 
   <ng-container matColumnDef="url">

@@ -1,11 +1,11 @@
 import { AbstractControl, AsyncValidatorFn } from "@angular/forms";
+import { Injectable } from "@angular/core";
 
 import { Observable } from "rxjs/Observable";
 import 'rxjs/add/operator/map';
 import 'rxjs/add/observable/of';
 
 import { UrlReductionService } from "./url-reduction.service";
-import { Injectable } from "@angular/core";
 
 @Injectable()
 export class UrlReductionValidator {
@@ -14,15 +14,15 @@ export class UrlReductionValidator {
 
   uniqueToken(): AsyncValidatorFn {
     return (control: AbstractControl): Promise<{ [key: string]: any } | null> | Observable<{ [key: string]: any } | null> => {
-      return new Observable(observer => {
-        if(control.value === null || control.value == "") {
-          observer.next(null);
+      return new Promise((resolve, reject) => {
+        if (control.value === null || control.value == '') {
+          resolve(null);
         } else {
           this.urlReductionService.find(control.value).subscribe(response => {
-            observer.next(response ? {uniqueToken: true} : null);
+            resolve({uniqueToken: true});
           }, error => {
-            observer.next(null);
-          });
+            resolve(null);
+          })
         }
       });
     }

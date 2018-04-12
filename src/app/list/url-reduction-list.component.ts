@@ -1,27 +1,40 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Subscription } from "rxjs/Subscription";
+import { environment } from '../../environments/environment';
 
 import { UrlReductionService } from "../shared/url-reduction.service";
-
-import { environment } from '../../environments/environment';
+import { MessageService } from "../shared/message.service";
 
 @Component({
   selector: 'url-reduction-list',
   templateUrl: './url-reduction-list.component.html',
   styleUrls: ['./url-reduction-list.component.css']
 })
-export class UrlReductionListComponent implements OnInit {
+export class UrlReductionListComponent implements OnInit, OnDestroy {
 
   columns: any = ['shortUrl', 'url'];
-  urlReductions: any = [];
+  urlReductions: Array<any> = [];
   appUrl: string = environment.appUrl;
 
-  constructor(private urlReductionService: UrlReductionService) { }
+  private messageServiceSubscription: Subscription = null;
 
-  ngOnInit() {
+  constructor(
+    private urlReductionService: UrlReductionService,
+    private messageService: MessageService
+  ) { }
+
+  ngOnInit(): void {
+    this.messageServiceSubscription = this.messageService.message.subscribe(message => {
+      this.loadData();
+    });
     this.loadData();
   }
 
-  private loadData() {
+  ngOnDestroy(): void {
+    this.messageServiceSubscription.unsubscribe();
+  }
+
+  private loadData(): void {
     this.urlReductionService.findAll().subscribe(response => {
       this.urlReductions = response;
     });

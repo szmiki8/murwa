@@ -7,7 +7,7 @@ A project for demonstration.
 [Purpose](#purpose)  
 [Requirements](#requirements)  
 [Specification](#specification)  
-[Testing](#testing_running)
+[Testing and Running](#testing_running)
 
 <a name="purpose"></a>
 ## Purpose
@@ -73,3 +73,8 @@ commands in the root of the source directory.
 
 - ./mvnw spring-boot:run (On Linux/Unix systems)
 - mvnw.cmd spring-boot:run (On Windows systems)
+
+You can access the application in your browser on the following
+address:
+
+<a href="http://localhost:8080/">http://localhost:8080/</a>

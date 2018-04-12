@@ -9,22 +9,21 @@ public class UrlReductionCreateRequest {
     @Size(min = 1)
     private String url;
 
-    @Size(min = 1)
     private String token;
 
     UrlReductionCreateRequest() { }
 
     public UrlReductionCreateRequest(String url) {
-        this.url = url;
+        this(url,null);
     }
 
     public UrlReductionCreateRequest(String url, String token) {
         this.url = url;
-        this.token = "".equals(token) ? null : token;
+        this.token = token;
     }
 
     public String getToken() {
-        return token;
+        return "".equals(token) ? null : token;
     }
 
     public void setToken(String token) {

@@ -4,6 +4,7 @@ import com.example.murwa.domain.UrlReduction;
 import com.example.murwa.domain.UrlReductionRepository;
 import com.example.murwa.reducer.UrlReducer;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
@@ -29,7 +30,7 @@ public class UrlReductionService {
     }
 
     public List<UrlReduction> findAll() {
-        return repository.findAll();
+        return repository.findAll(new Sort(Sort.Direction.DESC, "id"));
     }
 
     @Transactional
