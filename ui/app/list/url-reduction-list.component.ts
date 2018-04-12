@@ -14,7 +14,7 @@ export class UrlReductionListComponent implements OnInit, OnDestroy {
 
   columns: any = ['shortUrl', 'url'];
   urlReductions: Array<any> = [];
-  appUrl: string = environment.appUrl;
+  appUrl: string = environment.appUrl + 'r/';
 
   private messageServiceSubscription: Subscription = null;
 
