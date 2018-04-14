@@ -1,0 +1,9 @@
+img.preview {
+  position: relative;
+  top: -68px;
+}
+
+img.loading {
+  position: relative;
+  top: 0;
+}

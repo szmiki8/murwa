@@ -5,3 +5,7 @@
 .warning {
   font-weight: bold;
 }
+
+.row {
+  cursor: pointer;
+}

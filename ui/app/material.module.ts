@@ -10,6 +10,8 @@ import { MatInputModule } from '@angular/material/input';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatTableModule } from "@angular/material";
 import { MatSnackBarModule } from "@angular/material";
+import { OverlayModule } from '@angular/cdk/overlay';
+import { PortalModule } from '@angular/cdk/portal';
 
 @NgModule({
   imports: [
@@ -22,7 +24,9 @@ import { MatSnackBarModule } from "@angular/material";
     MatInputModule,
     MatSidenavModule,
     MatTableModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    OverlayModule,
+    PortalModule
   ],
   exports: [
     MatButtonModule,
@@ -34,7 +38,9 @@ import { MatSnackBarModule } from "@angular/material";
     MatInputModule,
     MatSidenavModule,
     MatTableModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    OverlayModule,
+    PortalModule
   ]
 })
 export class MaterialModule { }
