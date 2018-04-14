@@ -10,9 +10,7 @@
   <ng-container matColumnDef="shortUrl">
     <mat-header-cell *matHeaderCellDef> Short URL </mat-header-cell>
     <mat-cell *matCellDef="let urlReduction">
-      <a href="{{ appUrl }}{{ urlReduction.token }}" target="_blank">
         {{ appUrl }}{{ urlReduction.token }}
-      </a>
     </mat-cell>
   </ng-container>
 
@@ -22,5 +20,6 @@
   </ng-container>
 
   <mat-header-row *matHeaderRowDef="columns"></mat-header-row>
-  <mat-row *matRowDef="let row; columns: columns;"></mat-row>
+  <mat-row *matRowDef="let row; columns: columns;"
+           (click)="onRowClicked(row)" class="row"></mat-row>
 </mat-table>

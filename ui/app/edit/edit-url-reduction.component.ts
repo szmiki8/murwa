@@ -1,10 +1,10 @@
-import { Component, EventEmitter, Output } from '@angular/core';
+import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 import { UrlReductionValidator} from "../shared/url-reduction.validator";
 import { UrlReductionService} from "../shared/url-reduction.service";
 import { UrlReduction } from "../shared/url-reduction";
-import { MessageService } from "../shared/message.service";
+import { MessageService } from "../shared/message/message.service";
 import { MatSnackBar } from "@angular/material";
 
 @Component({
