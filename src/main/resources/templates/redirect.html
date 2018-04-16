@@ -1,0 +1,32 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title>URL Reduction</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  <meta http-equiv="refresh" th:content="'15; URL=' + ${url}" />
+
+  <style>
+    p {
+      text-align: center;
+    }
+    img {
+      width: 800px;
+      border: 1px solid #aaa;
+    }
+  </style>
+</head>
+<body>
+  <p>
+    You will be redirected to the following link in 15 seconds.<br />
+    (If you click on the following link you will be redirected immediately.)
+  </p>
+  <p>
+    <a th:href="${url}" th:text="${url}"></a>
+  </p>
+  <p>
+    <a th:href="${url}">
+      <img th:src="'data:image/png;base64,' + ${preview}" />
+    </a>
+  </p>
+</body>
+</html>

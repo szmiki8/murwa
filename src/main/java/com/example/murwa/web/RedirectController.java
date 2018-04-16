@@ -1,30 +1,40 @@
 package com.example.murwa.web;
 
 import com.example.murwa.domain.UrlReduction;
+import com.example.murwa.service.PreviewService;
 import com.example.murwa.service.UrlReductionService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpHeaders;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
-import java.net.URI;
+import java.util.Base64;
 
-@RestController
+@Controller
 @RequestMapping("/r")
 public class RedirectController {
 
     @Autowired
-    private UrlReductionService service;
+    private UrlReductionService urlReductionService;
+
+    @Autowired
+    private PreviewService previewService;
 
     @GetMapping("/{token}")
-    public ResponseEntity<?> get(@PathVariable String token) {
-      UrlReduction urlReduction = service.findByToken(token);
+    public String redirect(@PathVariable String token, Model model) {
+        UrlReduction urlReduction = urlReductionService.findByToken(token);
 
-      HttpHeaders headers = new HttpHeaders();
-      headers.setLocation(URI.create(urlReduction.getUrl()));
+        if (urlReduction == null) {
+            throw new RuntimeException();
+        }
 
-      return new ResponseEntity<>(headers, HttpStatus.MOVED_PERMANENTLY);
+        byte[] previewBytes = previewService.render(urlReduction.getToken());
+        String encodedPreviewBytes = Base64.getEncoder().encodeToString(previewBytes);
+
+        model.addAttribute("url", urlReduction.getUrl());
+        model.addAttribute("preview", encodedPreviewBytes);
+
+        return "redirect";
     }
 
 }
