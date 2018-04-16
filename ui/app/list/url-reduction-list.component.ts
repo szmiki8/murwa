@@ -1,6 +1,7 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Subscription } from "rxjs/Subscription";
 
+import { environment } from "../../environments/environment";
 import { UrlReductionService } from "../shared/url-reduction.service";
 import { MessageService } from "../shared/message/message.service";
 import { PreviewComponent } from "../preview/preview.component";
@@ -13,6 +14,7 @@ import { ModalService } from "../shared/modal.service";
 })
 export class UrlReductionListComponent implements OnInit, OnDestroy {
 
+  appUrl = environment.appUrl;
   columns: any = ['shortUrl', 'url'];
   urlReductions: Array<any> = [];
 
