@@ -4,10 +4,34 @@
           novalidate autocomplete="off" spellcheck="false">
       <mat-form-field class="full-width">
         <input matInput formControlName="url" placeholder="URL">
+
+        <div *ngIf="form.get('url').dirty || form.get('url').touched">
+          <mat-error *ngIf="form.get('url').errors?.pattern">
+            You must provide a valid URL! (e.g. http://spring.io)
+          </mat-error>
+
+          <mat-error *ngIf="form.get('url').errors?.maxLength">
+            Max length is 1000!
+          </mat-error>
+
+          <mat-error *ngIf="form.get('url').errors?.required">
+            Required!
+          </mat-error>
+        </div>
       </mat-form-field>
 
       <mat-form-field class="full-width">
         <input matInput formControlName="token" placeholder="Token">
+
+        <div *ngIf="form.get('token').dirty || form.get('token').touched">
+          <mat-error *ngIf="form.get('token').errors?.pattern">
+            You must provide a valid token! (Only letters and numbers.)
+          </mat-error>
+
+          <mat-error *ngIf="form.get('token').errors?.maxLength">
+            Max length is 255!
+          </mat-error>
+        </div>
       </mat-form-field>
 
       <button type="submit" color="primary" mat-raised-button
