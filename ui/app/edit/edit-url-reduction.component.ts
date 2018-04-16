@@ -38,15 +38,24 @@ export class EditUrlReductionComponent {
 
   private submitSuccess(): void {
     this.messageService.send('created');
-    this.form.reset({});
+    this.form.reset({url: 'https://'});
     this.snackBar.open('URL reduced!', 'Roger that!');
   }
 
   private createForm(): void {
     this.form = this.formBuilder.group({
-      url: ['', [Validators.required, Validators.minLength(1)]],
-      token: ['', [Validators.minLength(1), Validators.pattern("^[0-9a-zA-Z]*$")],
-        this.urlReductionValidator.uniqueToken()]
+      url: ['https://', [
+        Validators.required,
+        Validators.maxLength(1000),
+        Validators.pattern("^(https?:\\/\\/)[\\w\\-]+(\\.[\\w\\-]+)*(\\/[\\w\\-\\?\\#\\&\\.\\=\\/]*)?$")
+      ]],
+      token: ['', [
+        Validators.minLength(1),
+        Validators.maxLength(255),
+        Validators.pattern("^[0-9a-zA-Z]*$")
+      ],
+        this.urlReductionValidator.uniqueToken()
+      ]
     });
   }
 
